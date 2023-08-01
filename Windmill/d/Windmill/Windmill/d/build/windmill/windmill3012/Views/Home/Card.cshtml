@@ -1,0 +1,739 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+}
+
+
+<style>
+
+    .circle {
+        background-color: brown;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        margin-left: 50%;
+        animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+    }
+
+    @@keyframes scaleIn {
+        from {
+            transform: scale(.5, .5);
+            opacity: .5;
+        }
+
+        to {
+            transform: scale(2.5, 2.5);
+            opacity: 0;
+        }
+    }
+
+    #cmntbox {
+        position: absolute;
+        left: 30pc;
+        top: 20pc;
+    }
+
+
+    body {
+        width: 100%;
+    }
+
+    #windmill {
+        display: block;
+        margin: 0 auto;
+        width: 5pc;
+    }
+
+    .cls-3 {
+        transform: translateX(150px);
+        animation: scroll 20s infinite linear;
+    }
+
+
+    @@keyframes scroll {
+        from {
+            transform: translateX(-50px);
+        }
+
+        to {
+            transform: translateX(150px);
+        }
+    }
+
+
+
+    .col {
+        height: 15pc;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .col1 {
+        height: 20pc;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .card-header {
+        background-color: cadetblue;
+    }
+
+    .d-flex {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cls-2 {
+        fill: none
+    }
+
+    .cls-2, .cls-7 {
+        stroke: #4550e5;
+        stroke-linejoin: round;
+        stroke-linecap: round
+    }
+
+    .cls-5, .cls-7 {
+        fill: #fff
+    }
+
+    .cls-4 {
+        fill: #d6daff
+    }
+
+    #sidebar .nav {
+        height: 100px;
+        width: 100%;
+    }
+
+    .cir {
+        position: relative;
+        right: -5pc;
+        bottom: 7pc;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    #submit {
+        position: absolute;
+        left: 20pc;
+        top: 7pc;
+    }
+    /* Modal Content */
+    .modal-content {
+        background-color: white;
+        margin: auto;
+        padding: 20px;
+        top: 15pc;
+        border: 1px solid #888;
+        width: 30%;
+        height: 15pc;
+        font-size: large;
+    }
+
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    @@media all and (min-width:1001px) {
+        .alert {
+            right: 9pc;
+            height: 36pc;
+        }
+    }
+
+    @@media all and (min-width:400px) and (max-width: 1000px) {
+        .alert {
+            right: 0pc;
+            height: 0pc;
+        }
+    }
+
+    .alert-heading {
+        position: relative;
+        color: black;
+        left: 0pc;
+    }
+
+    /*.btn1 {
+    }
+    .btn2 {
+    }*/
+    /* The Close Button */
+    /*.close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    .btn-group button {
+        color: white;*/ /* White text */
+    /*padding: 10px 24px;*/ /* Some padding */
+    /*cursor: pointer;*/ /* Pointer/hand icon */
+    /*margin-top:5pc;
+    }*/
+
+    /* Clear floats (clearfix hack) */
+    /*.btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .btn-group button:not(:first-child) {
+        border-right: none;*/ /* Prevent double borders */
+    /*}
+
+    .btn-group button:not(:last-child) {
+        border-right: none;*/ /* Prevent double borders */
+    /*}*/
+
+    /* Add a background color on hover */
+    /*.btn-group button:hover {
+        background-color: #3e8e41;
+    }*/
+
+    #btnok,
+    #btncancel {
+        display: inline-block;
+        height: 40px;
+        font-size: medium;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .my-custom-scrollbar1 {
+        position: relative;
+        height: auto;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+
+    .card1 {
+        margin-bottom: 50px;
+        border-radius: 10px;
+    }
+
+    .cc {
+        margin-left: 50px;
+    }
+
+    .card2 {
+        margin-left: -55px;
+    }
+
+    .alertcard {
+        border-radius: 10px;
+        height: 32pc;
+    }
+</style>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row  col-lg-9 ">
+
+
+
+        <div class="card card1 col-lg-5">
+
+            <h1 class="mt-5">Open Tickets</h1>
+            <h1 class="right" id="Open" style="font-size:60px;">0</h1>
+            <div class="cir">
+                <div class="circle" id="tickcolor" style="animation-delay: 0s"></div>
+                <div class="circle" id="tickcolor1" style="animation-delay: 1s"></div>
+                <div class="circle" id="tickcolor2" style="animation-delay: 2s"></div>
+                <div class="circle" id="tickcolor3" style="animation-delay: 3s"></div>
+            </div>
+
+        </div>
+        <div class="card card1 cc col-lg-5 ">
+            <h1 class="mt-5">Closed Tickets</h1>
+            <h1 class="right" id="Close" style="font-size:60px;">0</h1>
+
+        </div>
+
+        <div class="card card1  col-lg-5 ">
+            <h1 class="mt-5">Open Tickets Description</h1>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Device ID</th>
+                            <th scope="col">Opened At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="opentickets">
+                    </tbody>
+
+
+                </table>
+            </div>
+            <div id="myModal" class="modal">
+
+
+                <div class="modal-content" id="alert" style="height:10pc;">
+                    <span class="close">&times;</span>
+                    <p>Are you sure want to close?</p>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-md center-block" Style="width: 100px; margin-right: 16px" id="btnok">Yes</button>
+                        <button class="btn btn-danger btn-md center-block" Style="width: 100px; margin-left: 16px" id="btnno">No</button>
+                    </div>
+                </div>
+
+                <div class="modal-content" id="comment">
+                    <span id="close" class="close">&times;</span>
+                    <p>Enter the comments</p>
+                    <div class="btn-group">
+
+                        <textarea placeholder="Enter text here..." style="max-width:100%;" rows="4" cols="50" name="comment" id="commenttext" form="usrform"> </textarea>
+                        <button class="btn-primary" id="submitcmnt" type="submit" form="form1" value="Submit">Submit</button>
+
+                    </div>
+                </div>
+                <div class="modal-content" id="alert1" style="height:10pc;">
+                    <span id="close1" class="close">&times;</span>
+                    <p>Do you want to Procced?</p>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-md center-block" Style="width: 100px; margin-right: 16px" id="proceedyes">Yes</button>
+                        <button class="btn btn-danger btn-md center-block" Style="width: 100px; margin-left: 16px" id="proceedno">No</button>
+                    </div>
+                </div>
+                <div class="modal-content" id="alert2" style="height:10pc;">
+
+                    <p>Closed Successfully.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-md center-block" Style="width: 100px; margin-right: 16px" id="successyes">Ok</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card card1 cc col-lg-5">
+            <h1 class="mt-5">Closed Tickets Description</h1>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+
+                <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Device ID</th>
+                            <th scope="col">Closed At</th>
+                            <th scope="col">Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="closedtickets">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="row card2 col-lg-3 ">
+
+
+        <div class="card alertcard" style="border-color: #FF7B77; ">
+            <h1 class="card-header" style="background-color: #FF7B77; ">
+                Alert
+            </h1>
+            <div class="card-body">
+
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-bordered table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">LWT</th>
+                                <th scope="col">Message</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="alertbody">
+                        </tbody>
+                    </table>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+<script>
+
+    var selectedid = "",selectedcomment="";
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+   // var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    //btn.onclick = function () {
+    //    modal.style.display = "block";
+    //}
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+
+
+
+
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+    }
+
+
+
+
+
+    $('#submitcmnt').click(function (e) {
+       // e.stopPropagation();
+
+        selectedcomment = document.getElementById('commenttext').value;
+        if (selectedcomment == " ") {
+            alert("please enter a comment");
+            $("#comment").show();
+        }
+        else {
+            $("#alert1").show();
+            $("#comment").hide();
+        }
+    });
+
+    $('#proceedyes').click(function (e) {
+        e.stopPropagation();
+        $("#alert2").show();
+        $("#alert1").hide();
+        document.getElementById('commenttext').value="";
+        closeticket(selectedid,selectedcomment);
+
+
+
+    });
+    $('#proceedno').click(function (e) {
+        e.stopPropagation();
+        $("#alert1").hide();
+        modal.style.display = "none";
+    });
+    $('#successyes').click(function (e) {
+        e.stopPropagation();
+        $("#alert2").hide();
+        modal.style.display = "none";
+    });
+
+
+
+    $('#btnok').click(function (e) {
+        e.stopPropagation();
+
+        $("#alert").hide();
+        $("#comment").show();
+    });
+    $('#btnno').click(function (e) {
+        modal.style.display = "none";
+    });
+    $('#close').click(function (e) {
+        modal.style.display = "none";
+    });
+    $('#close1').click(function (e) {
+        modal.style.display = "none";
+    });
+
+    function alertshow(id) {
+
+        selectedid = id;
+        modal.style.display = "block";
+        $("#alert").show();
+        $("#comment").hide();
+        $("#alert1").hide();
+        $("#alert2").hide();
+
+    }
+
+      let docdefinition = "";
+        //var spinner = $('#loader');
+        var weburl= '@System.Configuration.ConfigurationManager.AppSettings["URL"]';
+        var fromdate, todate;
+    $(document).ready(function () {
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        fromdate = now.getFullYear() + "-" + (month) + "-" + (day);
+        todate = now.getFullYear() + "-" + (month) + "-" + (day);
+
+        GetOpenCloseTicket(today);
+        GetOpenTicketDetails(today);
+        GetCloseTicketDetails(today);
+        GetofflineDetails(today);
+        setInterval(initMap, 5000);
+        initMap();
+    });
+
+    function initMap() {
+        GetOpenCloseTicket(fromdate);
+        GetOpenTicketDetails(fromdate);
+        GetCloseTicketDetails(fromdate);
+        GetofflineDetails(fromdate);
+    }
+
+    async function closeticket(id,comment) {
+
+        let url = weburl + "api/GetDashboardController/closeticket/" + id + "/" + comment;
+
+        axios.get(url).then
+
+            (data => {
+
+                console.log(data.data);
+                var row = '', row1 = '', row2 = '', row3 = '';
+                let rowhtml = "";
+
+
+                if (data.data.length == 0) {
+
+
+                    return;
+                }
+                for (i = 0; i < data.data.length; i++) {
+                    let obj = data.data[i];
+
+
+
+                }
+
+
+                GetOpenCloseTicket(fromdate);
+                GetOpenTicketDetails(fromdate);
+                GetCloseTicketDetails(fromdate);
+            }).catch(err => alert(err));
+    }
+
+
+    async function GetofflineDetails(date) {
+
+        let url = weburl + "api/GetDashboardController/GetofflineDetails/" + date ;
+
+        axios.get(url).then
+
+            (data => {
+
+                console.log(data.data);
+                var row = '', row1 = '', row2 = '', row3 = '';
+                let rowhtml = "";
+
+
+                if (data.data.length == 0) {
+
+
+                }
+                for (i = 0; i < data.data.length; i++) {
+                    let obj = data.data[i];
+                    rowhtml +=` <tr> <td>${obj.rtime.replace("T", " ")}</td>
+                        <td>${obj.name}-offline</td></tr>`;
+
+
+
+                }
+                document.getElementById("alertbody").innerHTML = rowhtml;
+
+                  }).catch(err => alert(err));
+    }
+    async function GetOpenCloseTicket(date) {
+
+        let url = weburl + "api/GetDashboardController/GetOpenCloseTicket/" + date;
+
+        axios.get(url).then
+
+            (data => {
+
+                console.log(data.data);
+                var row = '', row1 = '', row2 = '', row3 = '';
+                let rowhtml = "";
+
+
+                if (data.data.length == 0) {
+
+
+                    return;
+                }
+                for (i = 0; i < data.data.length; i++) {
+                    let obj = data.data[i];
+
+
+                    document.getElementById("Open").innerHTML = obj['openticket'];
+                    document.getElementById("Close").innerHTML = obj['closeticket'];
+                    if (obj['openticket'] == "0") {
+                        document.getElementById('tickcolor').style.background = "#00ff00";
+                        document.getElementById('tickcolor1').style.background = "#00ff00";
+                        document.getElementById('tickcolor2').style.background = "#00ff00";
+                        document.getElementById('tickcolor3').style.background = "#00ff00";
+                    }
+                    else {
+                        document.getElementById('tickcolor').style.background = "#ff0000";
+                        document.getElementById('tickcolor1').style.background = "#ff0000";
+                        document.getElementById('tickcolor2').style.background = "#ff0000";
+                        document.getElementById('tickcolor3').style.background = "#ff0000";
+                    }
+                }
+
+
+
+            }).catch(err => alert(err));
+    }
+    async function GetOpenTicketDetails(date) {
+
+        let url = weburl + "api/GetDashboardController/GetTotalOpenTicketDetails/" + date;
+
+        axios.get(url).then
+
+            (data => {
+
+                console.log(data.data);
+                var row = '', row1 = '', row2 = '', row3 = '';
+                let rowhtml = "";
+
+
+                if (data.data.length == 0) {
+
+                    document.getElementById("opentickets").innerHTML = "No Datas";
+
+                    return;
+                }
+                for (i = 0; i < data.data.length; i++) {
+                    let obj = data.data[i];
+
+
+                    rowhtml += `<tr>
+                        <td >${i + 1}</th>
+                        <td href="" style="text-decoration: underline; color: blue;cursor:pointer;" onclick="alertshow(${obj.id});">${obj.device}</td>
+                        <td> ${obj.intime.replace('T',' ')}</td>
+                    </tr>`;
+
+                        document.getElementById("opentickets").innerHTML = rowhtml;
+                      //  button();
+
+
+                }
+
+
+            }).catch(err => alert(err));
+    }
+    function trclick() { console.log('tr clicked') };
+
+    function tdclick(event) {
+        console.log('td clicked');
+        event.stopPropagation()
+    };
+
+    async function GetCloseTicketDetails(date) {
+
+        let url = weburl + "api/GetDashboardController/GetTotalcloseTicketDetails/" + date;
+
+        axios.get(url).then
+
+            (data => {
+
+                console.log(data.data);
+                var row = '', row1 = '', row2 = '', row3 = '';
+                let rowhtml = "";
+
+
+                if (data.data.length == 0) {
+
+                    document.getElementById("closedtickets").innerHTML = "No Datas";
+
+                    return;
+                }
+                for (i = 0; i < data.data.length; i++) {
+                    let obj = data.data[i];
+
+
+                    rowhtml += `<tr>
+                        <th scope="row">${i + 1}</th>
+                        <td>${obj.device}</td>
+                        <td>${obj.outtime.replace('T', ' ')}</td>
+<td>${obj.descr}</td>
+                        </tr>`;
+
+
+
+                }
+                document.getElementById("closedtickets").innerHTML = rowhtml;
+
+
+            }).catch(err => alert(err));
+    }
+
+
+
+
+
+</script>
+
+
+
+
